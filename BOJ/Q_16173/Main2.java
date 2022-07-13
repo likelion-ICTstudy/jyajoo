@@ -38,7 +38,7 @@ public class Main2 {
     }
 
     static void dfs(int x, int y) {
-
+        /*
         // 이동가능한지, 방문한 적이 있는지, 승리지점인지 확인
         if (x >= arr.length || y >= arr.length) {
             return ;
@@ -53,5 +53,27 @@ public class Main2 {
 
         dfs(x, arr[x][y] + y);
         dfs(arr[x][y] + x, y);
+         */
+
+        if (arr[x][y] == -1) {
+            check = true;
+            return ;
+        }
+
+        visited[x][y] = true;
+
+        // 이동가능한지 확인
+        if (arr[x][y] + y < arr.length) {
+            if (!visited[x][arr[x][y] + y]) {
+                dfs(x, arr[x][y] + y);
+            }
+        }
+
+        if (arr[x][y] + x < arr.length) {
+            if (!visited[arr[x][y] + x][y]) {
+                dfs(arr[x][y] + x, y);
+            }
+        }
+
     }
 }
